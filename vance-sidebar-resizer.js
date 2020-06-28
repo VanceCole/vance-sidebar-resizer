@@ -6,8 +6,10 @@ Hooks.on("ready", function() {
     let mouseStart, startSize, newSize;
     
     // Reset saved width if it exists
+    // Also renew the cookie so it doesn't eventually expire
     if(Number.isInteger(+initSize)) {
         sidebar.style.width = `${initSize}px`;
+        setCookie('vance-sidebar-size', initSize, 365);
     }
 
     // Create a resizer handle
@@ -43,7 +45,7 @@ Hooks.on("ready", function() {
 
     // On mouseup remove listeners & save final size
     function stopResize(e) {
-        document.cookie = `vance-sidebar-size=${sidebar.offsetWidth}`;
+        setCookie('vance-sidebar-size', sidebar.offsetWidth, 365);
         window.removeEventListener('mousemove', resize, false);
         window.removeEventListener('mouseup', stopResize, false);
     }
@@ -54,4 +56,10 @@ Hooks.on("ready", function() {
 function getCookie(name) {
     var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
+}
+// Sets a cookie
+function setCookie(name, value, days) {
+    var d = new Date;
+    d.setTime(d.getTime() + 24*60*60*1000*days);
+    document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
 }
