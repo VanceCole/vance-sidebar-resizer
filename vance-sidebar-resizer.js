@@ -37,9 +37,9 @@ Hooks.on("ready", function() {
     function resize(e) {
         newSize = startSize + mouseStart - e.clientX;
         if (newSize >= minSize) {
-            sidebar.style.width = `${newSize}px`;
+            sidebar.style.width = `${newSize}px!important`;
         } else {
-            sidebar.style.width = `${minSize}px`;
+            sidebar.style.width = `${minSize}px!important`;
         }
     }
 
