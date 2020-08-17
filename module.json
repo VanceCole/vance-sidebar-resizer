@@ -3,15 +3,15 @@
   "title": "Vance's Sidebar Resizer",
   "description": "Allows drag resizing of the sidebar (chat, actors, etc)",
   "author": "Vance Cole",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.6.4",
+  "compatibleCoreVersion": "0.6.5",
   "esmodules": [
     "./vance-sidebar-resizer.js"
   ],
   "url": "https://github.com/VanceCole/vance-sidebar-resizer",
   "manifest": "https://raw.githubusercontent.com/VanceCole/vance-sidebar-resizer/master/module.json",
-  "download": "https://github.com/VanceCole/vance-sidebar-resizer/releases/download/v0.0.1/v0.0.1.zip",
+  "download": "https://github.com/VanceCole/vance-sidebar-resizer/releases/download/0.0.2/sidebar-resizer.zip",
   "readme": "https://github.com/VanceCole/vance-sidebar-resizer/blob/master/README.md",
   "changelog": "https://github.com/VanceCole/vance-sidebar-resizer/blob/master/changelog.md"
 }
