@@ -1,4 +1,4 @@
-Hooks.on("ready", function() {
+Hooks.once("renderSidebar", function() {
   // Setup vars
   let important = '';
   let minSize = 300;
