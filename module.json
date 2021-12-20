@@ -2,10 +2,10 @@
   "name": "vance-sidebar-resizer",
   "title": "Vance's Sidebar Resizer",
   "description": "Allows drag resizing of the sidebar (chat, actors, etc)",
-  "author": "Vance Cole",
-  "version": "0.0.2",
-  "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.6.5",
+  "authors": ["Vance Cole", "JeansenVaars"],
+  "version": "0.1.0",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "0.8.9",
   "esmodules": [
     "./vance-sidebar-resizer.js"
   ],

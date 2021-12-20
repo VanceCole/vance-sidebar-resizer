@@ -1,43 +1,16 @@
-Hooks.on("ready", function() {
+Hooks.once("ready", function() {
   // Setup vars
-  let important = '';
-  let minSize = 300;
   const sidebar = document.querySelector('#sidebar');
-  const initSize = window.localStorage.getItem('vance-sidebar-size');
+  let minSize = 300;
   let mouseStart, startSize, newSize;
-
-  // List of known incompatibilities that need !important flag
-  let compatibility = [
-    {
-        type: 'module',
-        name: 'pathfinder-ui',
-        min: 350,
-        important: true,
-    },
-  ]
-  
-  // Check if any incompatibilities are active
-  compatibility.forEach((i) => {
-    if (i.type === 'module') {
-      if (game.modules.get(i.name)?.active) {
-        if (i.important) important = ' !important';
-        minSize = i.min;
-      }
-    }
-  });
-
-  // Reset saved width if it exists
-  if (Number.isInteger(+initSize)) {
-    sidebar.setAttribute('style', `width: ${initSize}px${important}`);
-  }
 
   // Create a resizer handle
   const resizer = document.createElement('div');
   resizer.style.width = '6px';
   resizer.style.height = '100%';
   resizer.style.position = 'absolute';
-  resizer.style.left = 0;
-  resizer.style.top = 0;
+  resizer.style.left = '0';
+  resizer.style.top = '0';
   resizer.style.cursor = 'col-resize';
   sidebar.appendChild(resizer);
 
@@ -56,16 +29,23 @@ Hooks.on("ready", function() {
   function resize(e) {
     newSize = Math.round(startSize + mouseStart - e.clientX);
     if (newSize >= minSize) {
-      sidebar.setAttribute('style', `width: ${newSize}px${important}`);
+      sidebar.setAttribute('style', `width: ${newSize}px`);
     } else {
-      sidebar.setAttribute('style', `width: ${minSize}px${important}`);
+      sidebar.setAttribute('style', `width: ${minSize}px$`);
     }
   }
 
   // On mouseup remove listeners & save final size
   function stopResize(e) {
-  window.localStorage.setItem('vance-sidebar-size', sidebar.offsetWidth);
-  window.removeEventListener('mousemove', resize, false);
-  window.removeEventListener('mouseup', stopResize, false);
+    game.user.setFlag('vance-sidebar-resizer', 'sidebar-init-size', sidebar.offsetWidth);
+    window.removeEventListener('mousemove', resize, false);
+    window.removeEventListener('mouseup', stopResize, false);
+  }
+});
+
+Hooks.on('renderSidebarTab', function() {
+  const lastSidebarSize = game.user.getFlag('vance-sidebar-resizer', 'sidebar-init-size');
+  if (Number.isInteger(+lastSidebarSize)) {
+    sidebar.setAttribute('style', `width: ${lastSidebarSize}px`);
   }
 });
