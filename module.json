@@ -1,7 +1,7 @@
 {
   "name": "sidebar-resizer",
   "title": "Sidebar Resizer",
-  "description": "Allows drag resizing of the sidebar (chat, actors, etc)",
+  "description": "Allows drag resizing of the right-hand sidebar",
   "authors": ["Vance Cole", "JeansenVaars"],
   "version": "0.1.0",
   "minimumCoreVersion": "0.8.9",

@@ -1,0 +1,32 @@
+{
+  "name": "foundryvtt-sidebar-resizer",
+  "version": "0.1.0",
+  "description": "Allows drag resizing of the right-hand sidebar",
+  "main": "sidebar-resizer.js",
+  "scripts": {
+    "copy": "mkdir -p dist && cp ./sidebar-resizer.js dist/ && cp ./README.md dist/ && cp ./CHANGELOG.md dist/ && cp ./LICENSE.md dist/ && cp ./module.json dist/ && cp ./THANKS.txt dist/",
+    "copyWin": "mkdir dist && copy module.json dist && copy sidebar-resizer.js dist && copy README.md dist && copy CHANGELOG.md dist && copy LICENSE.md dist && copy module.json dist && copy THANKS.txt dist",
+    "zip": "npm-build-zip --source=dist --destination=.",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saif-ellafi/foundryvtt-sidebar-resizer.git"
+  },
+  "keywords": [
+    "foundry",
+    "vtt",
+    "sidebar",
+    "resize",
+    "chat"
+  ],
+  "author": "JeansenVaars (Saif Ellafi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer/issues"
+  },
+  "homepage": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer",
+  "devDependencies": {
+    "npm-build-zip": "^1.0.3"
+  }
+}
