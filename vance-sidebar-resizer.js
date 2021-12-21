@@ -1,6 +1,4 @@
-Hooks.once("ready", function() {
-  // Setup vars
-  const sidebar = document.querySelector('#sidebar');
+function _assignResizer(sidebar) {
   let minSize = 300;
   let mouseStart, startSize, newSize;
 
@@ -41,11 +39,23 @@ Hooks.once("ready", function() {
     window.removeEventListener('mousemove', resize, false);
     window.removeEventListener('mouseup', stopResize, false);
   }
+}
+
+Hooks.once('ready', function() {
+  // Setup vars
+  const sidebar = document.querySelector('#sidebar');
+  _assignResizer(sidebar);
 });
 
-Hooks.on('renderSidebarTab', function() {
+Hooks.on('renderSidebarTab', function(targetTab) {
   const lastSidebarSize = game.user.getFlag('vance-sidebar-resizer', 'sidebar-init-size');
-  if (Number.isInteger(+lastSidebarSize)) {
-    sidebar.setAttribute('style', `width: ${lastSidebarSize}px`);
+  if (!lastSidebarSize) return;
+  if (targetTab.popOut) {
+    targetTab.setPosition({width: lastSidebarSize});
+  } else {
+    if (Number.isInteger(+lastSidebarSize)) {
+      const sidebar = document.querySelector('#sidebar');
+      sidebar.setAttribute('style', `width: ${lastSidebarSize}px`);
+    }
   }
 });
