@@ -7,7 +7,6 @@ function _assignResizer(sidebar) {
   resizer.style.width = '6px';
   resizer.style.height = '100%';
   resizer.style.position = 'absolute';
-  resizer.style.left = '0';
   resizer.style.top = '0';
   resizer.style.cursor = 'col-resize';
   sidebar.appendChild(resizer);
@@ -17,6 +16,7 @@ function _assignResizer(sidebar) {
 
   // React to user resizing
   function startResize(e) {
+    if (ui.sidebar._collapsed) return;
     mouseStart = e.clientX;
     startSize = sidebar.offsetWidth;
     window.addEventListener('mousemove', resize, false);
@@ -43,7 +43,7 @@ function _assignResizer(sidebar) {
 
 Hooks.once('ready', function() {
   // Setup vars
-  const sidebar = document.querySelector('#sidebar');
+  const sidebar = ui.sidebar.element[0];
   _assignResizer(sidebar);
 });
 
@@ -57,5 +57,14 @@ Hooks.on('renderSidebarTab', function(targetTab) {
       const sidebar = document.querySelector('#sidebar');
       sidebar.setAttribute('style', `width: ${lastSidebarSize}px`);
     }
+  }
+});
+
+Hooks.on('collapseSidebar', function(_, isCollapsing) {
+  const lastSidebarSize = game.user.getFlag('sidebar-resizer', 'sidebar-init-size');
+  if (!lastSidebarSize || isCollapsing) return;
+  if (Number.isInteger(+lastSidebarSize)) {
+    const sidebar = document.querySelector('#sidebar');
+    sidebar.setAttribute('style', `width: ${lastSidebarSize}px`);
   }
 });
