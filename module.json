@@ -1,17 +1,17 @@
 {
-  "name": "vance-sidebar-resizer",
-  "title": "Vance's Sidebar Resizer",
-  "description": "Allows drag resizing of the sidebar (chat, actors, etc)",
-  "author": "Vance Cole",
-  "version": "0.0.2",
-  "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.6.5",
+  "name": "sidebar-resizer",
+  "title": "Sidebar Resizer",
+  "description": "Allows drag resizing of the right-hand sidebar",
+  "authors": ["Vance Cole", "JeansenVaars"],
+  "version": "0.1.0",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9.238",
   "esmodules": [
-    "./vance-sidebar-resizer.js"
+    "./sidebar-resizer.js"
   ],
-  "url": "https://github.com/VanceCole/vance-sidebar-resizer",
-  "manifest": "https://raw.githubusercontent.com/VanceCole/vance-sidebar-resizer/master/module.json",
-  "download": "https://github.com/VanceCole/vance-sidebar-resizer/releases/download/0.0.2/vance-sidebar-resizer.zip",
-  "readme": "https://github.com/VanceCole/vance-sidebar-resizer/blob/master/README.md",
-  "changelog": "https://github.com/VanceCole/vance-sidebar-resizer/blob/master/changelog.md"
+  "url": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer.git",
+  "manifest": "https://raw.githubusercontent.com/saif-ellafi/foundryvtt-sidebar-resizer/releases/latest/download/module.json",
+  "download": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer/releases/download/0.1.0/foundryvtt-sidebar-resizer_0.1.0.zip",
+  "readme": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer/blob/master/README.md",
+  "changelog": "https://github.com/saif-ellafi/foundryvtt-sidebar-resizer/blob/master/CHANGELOG.md"
 }
